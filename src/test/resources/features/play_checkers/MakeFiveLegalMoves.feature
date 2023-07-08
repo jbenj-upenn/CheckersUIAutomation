@@ -5,12 +5,16 @@ Feature: User can make moves as orange in Checkers game
     And verify Checkers is set to new game
 
   @Checkers @UI @Smoke @Regression
-  Scenario: User begins game making a legal move
-    Then user obtains all board spaces and pieces
+  Scenario: User reads all spaces on board
     And user reads own orange pieces
     And user reads CPU blue pieces
 
-@Checkers @UI @Smoke @Regression
-  Scenario: User reads first clickable spaces
-  And user reads first clickable
-  And user reads second clickable
+  @Checkers @UI @Smoke @Regression
+  Scenario: User reads clickable pieces and clickable spaces to move to
+    And user reads first clickable
+    And user reads second clickable
+    And user determines first valid clickable
+    And user determines second valid clickable
+    And user determines valid jumpable pieces
+    Then user determines best move
+

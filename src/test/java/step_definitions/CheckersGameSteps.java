@@ -27,48 +27,39 @@ public class CheckersGameSteps {
     }
     @Then("user obtains all board spaces and pieces")
     public void user_obtains_all_board_spaces_and_pieces() {
-        List<WebElement> allSpaces = checkersGamePage.readAllSpaces();
-        for (WebElement space : allSpaces) {
-            System.out.println("Board Space: 'name' - " + space.getAttribute("name"));
-            System.out.println("Board Space: 'onclick' - " + space.getAttribute("onclick"));
-            System.out.println("Board Space: 'src' - " + space.getAttribute("src"));
+        checkersGamePage.setAllPlayableSpaces();
         }
-    }
     @And("user reads own orange pieces")
     public void user_reads_own_orange_piece() {
-        List<WebElement> myPieces = checkersGamePage.readMyPieces();
-        for (WebElement myPiece : myPieces) {
-            System.out.println("My Piece: 'name' - " + myPiece.getAttribute("name"));
-            System.out.println("My Piece: 'onclick' - " + myPiece.getAttribute("onclick"));
-            System.out.println("My Piece: 'src' - " + myPiece.getAttribute("src"));
-        }
+        checkersGamePage.readMyPieces();
     }
     @And("user reads CPU blue pieces")
     public void user_reads_cpu_blue_pieces() {
-        List<WebElement> cpuPieces = checkersGamePage.readCPUPieces();
-        for (WebElement cpuPiece : cpuPieces) {
-            System.out.println("CPU Piece: 'name' - " + cpuPiece.getAttribute("name"));
-            System.out.println("CPU Piece: 'onclick' - " + cpuPiece.getAttribute("onclick"));
-            System.out.println("CPU Piece: 'src' - " + cpuPiece.getAttribute("src"));
-        }
+        checkersGamePage.readCPUPieces();
     }
     @Then("user reads first clickable")
     public void user_reads_first_clickable(){
-        List<WebElement> firstClickable = checkersGamePage.setFirstClickable();
-
-        for(WebElement clickable : firstClickable) {
-            System.out.println("Click First: onclick- " + clickable.getAttribute("onclick")
-            + "\n\tname- " + clickable.getAttribute("src"));
-        }
+        checkersGamePage.setFirstClickable();
     }
     @And("user reads second clickable")
     public void user_reads_second_clickable(){
-        List<WebElement> secondClickable = checkersGamePage.setSecondClickable();
-
-        for(WebElement clickable : secondClickable) {
-            System.out.println("Click second: onclick- " + clickable.getAttribute("onclick")
-                    + "\n\tname- " + clickable.getAttribute("src"));
-        }
+        checkersGamePage.setSecondClickable();
+    }
+    @And("user determines first valid clickable")
+    public void user_determines_first_valid_clickable() {
+        checkersGamePage.determineFirstValidClickable();
+    }
+    @And("user determines second valid clickable")
+    public void user_determines_second_valid_clickable(){
+        checkersGamePage.determineSecondValidClickable();
+    }
+    @And("user determines valid jumpable pieces")
+    public void user_determines_valid_jumpable_pieces(){
+        checkersGamePage.determineValidJumpable();
+    }
+    @Then("user determines best move")
+    public void user_determines_best_move(){
+        checkersGamePage.determineBestMove();
     }
 
 
